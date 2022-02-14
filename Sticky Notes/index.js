@@ -5,8 +5,15 @@ let generatedId=1;
 if(localStorage.getItem("notes")!==null)
 {
     notesData=JSON.parse(localStorage.getItem("notes"));
-    let lastIndex=notesData.length-1;
-    generatedId=notesData[lastIndex].id+1;
+    
+//     check if array is not empty then only check for last element id otherwise continue with id of 1 for new element cause array in 
+//     localstorage will become empty if you delete all elements
+    if(notesData.length!==0)
+    {
+        let lastIndex=notesData.length-1;
+        generatedId=notesData[lastIndex].id+1;
+    }
+    
 }
 
 function displayExistingNotes()
